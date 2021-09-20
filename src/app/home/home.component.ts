@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   loading = false;
   submitted = false;
   loginUser!: Employee;
+  loginUserId: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,22 +30,21 @@ export class HomeComponent implements OnInit {
   get f() { return this.form.controls; }
 
   ngOnInit(): void {
+    this.loginUserId = this.localStorageService.getItem("userId");
     this.form = this.formBuilder.group({
       loginUser: ['', Validators.required],
     });
 
-    this.localStorageService.setItem("userId", "eulee");
-    //this.alertService.success('Login user selected: ' + "eulee", { keepAfterRouteChange: true });
-
     this.employeeService.getAll()
       .pipe(first())
       .subscribe(
-        employees => this.employees = employees,
-        employees => {
-          this.alertService.success('XXX', { keepAfterRouteChange: true });
-          if (employees.length > 0) {
+        employees => 
+        {
+          this.employees = employees;
+          if (employees.length > 0 && this.loginUserId == null) {
             this.localStorageService.setItem("userId", employees[0].employeeId);
-            this.alertService.success('Login user selected: ' + employees[0].employeeId, { keepAfterRouteChange: true });
+            this.loginUserId = employees[0].employeeId;
+            this.alertService.success('Login user is set: ' + employees[0].employeeId, { keepAfterRouteChange: true });
           }
         }
       );

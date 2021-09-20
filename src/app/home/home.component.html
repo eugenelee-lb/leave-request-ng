@@ -9,7 +9,9 @@
                 <div class="form-group col">
                     <label>Select Login User</label>
                     <select formControlName="loginUser" class="form-control">
-                        <option *ngFor="let employee of employees" [value]="employee.employeeId">{{employee.firstName}} {{employee.lastName}}</option>
+                        <option *ngFor="let employee of employees" [value]="employee.employeeId" [selected]="employee.employeeId==='eulee'">
+                            {{employee.firstName}} {{employee.lastName}}
+                        </option>
                     </select>
                 </div>
             </div>
