@@ -1,10 +1,17 @@
 <!-- nav -->
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-  <div class="navbar-nav">
+  <div class="container-fluid">
+    <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       <a class="nav-item nav-link" routerLink="/employees" routerLinkActive="active">Employees</a>
       <a class="nav-item nav-link" routerLink="/my-accruals" routerLinkActive="active">My Accruals</a>
       <a class="nav-item nav-link" routerLink="/my-requests" routerLinkActive="active">My Requests</a>
+    </div>
+    <div class="d-fluid">
+      <span class="navbar-text">
+        <!-- Login User Name -->
+      </span>
+    </div>
   </div>
 </nav>
 

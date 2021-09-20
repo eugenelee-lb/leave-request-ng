@@ -2,6 +2,23 @@
     <div class="container">
         <h1>Leave Request</h1>
         <p>Simple application to view employee accrual balances and submit/approve leave request</p>
-        <p><a routerLink="/employees">&gt;&gt; Manage Employees</a></p>
+        <!-- <p><a routerLink="/employees">&gt;&gt; Manage Employees</a></p> -->
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Select Login User</label>
+                    <select formControlName="loginUser" class="form-control">
+                        <option *ngFor="let employee of employees" [value]="employee.employeeId">{{employee.firstName}} {{employee.lastName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Save
+                </button>
+            </div>
+        </form>
     </div>
 </div>
