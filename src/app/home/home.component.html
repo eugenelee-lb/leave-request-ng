@@ -6,7 +6,7 @@
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row">
-                <div class="form-group col">
+                <div class="form-group col-3">
                     <label>Select Login User</label>
                     <select formControlName="loginUser" class="form-control">
                         <option *ngFor="let employee of employees" [value]="employee.employeeId" [selected]="employee.employeeId==='eulee'">
